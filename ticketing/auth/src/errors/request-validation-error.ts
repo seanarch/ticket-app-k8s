@@ -1,6 +1,17 @@
 import { ValidationError } from "express-validator";
+import { CustomError } from "./custom-error";
 
-export class RequestValidationError extends Error {
+// interface CustomError {
+//   statusCode: number;
+//   serializeErrors(): {
+//     message: string;
+//     field?: string;
+//   }[];
+// }
+
+// instead, use abstract class
+
+export class RequestValidationError extends CustomError {
   statusCode = 400;
 
   constructor(public errors: ValidationError[]) {
